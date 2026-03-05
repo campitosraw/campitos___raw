@@ -109,12 +109,14 @@ body {
 }
 
 .logo {
+    font-family: 'Unbounded', sans-serif; /* Aseguramos que use la fuente Unbounded */
     font-size: 1.1rem;
-    font-weight: 500;
-    letter-spacing: 0.05em;
+    font-weight: 500;             /* 'Medium' en Unbounded suele ser 500 */
+    letter-spacing: -0.075rem;    /* El valor -12 en diseño suele equivaler a aprox -0.075rem o -1.2px */
     color: var(--color-text);
     text-decoration: none;
     white-space: nowrap;
+    text-transform: uppercase;    /* Opcional: para mantener el estilo de tus capturas */
 }
 
 .nav-menu {
