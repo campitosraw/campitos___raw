@@ -1,0 +1,220 @@
+/* ===================================
+   VARIABLES GLOBALES
+   =================================== */
+:root {
+    --color-bg: #FAFAF8;
+    --color-text: #000000;
+    --color-accent: #000000;
+    --color-secondary: #e4198c;
+    --color-border: #E8E8E5;
+    --font-main: 'Unbounded', sans-serif;
+    --font-body: 'Poppins', sans-serif; /* Añadido de tu project.css */
+    
+    /* Espaciados */
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 1.5rem;
+    --spacing-lg: 2rem;
+    --spacing-xl: 3rem;
+    --spacing-2xl: 4rem;
+    --spacing-3xl: 5rem;
+    
+    /* Transiciones */
+    --transition-fast: 0.2s ease;
+    --transition-normal: 0.3s ease;
+    --transition-smooth: 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    --transition-slow: 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ===================================
+   RESET Y ESTILOS BASE
+   =================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+body {
+    font-family: var(--font-main);
+    font-weight: 700;
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    letter-spacing: 0.05em;
+}
+
+/* ===================================
+   ANIMACIONES
+   =================================== */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(2.5rem);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* ===================================
+   HEADER Y NAVEGACION (Versión Fija)
+   =================================== */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background: rgba(250, 250, 248, 0.9);
+    backdrop-filter: blur(8px);
+    animation: slideDown 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.nav-container {
+    max-width: 87.5rem;
+    margin: 0 auto;
+    padding: 1.5rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: nowrap;
+}
+
+.logo {
+    font-size: 1.1rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    color: var(--color-text);
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 1.5rem;
+}
+
+.nav-link {
+    position: relative;
+    text-decoration: none;
+    color: var(--color-text);
+    transition: color 0.3s ease;
+    font-size: 0.95rem; /* Combinado de tu project.css */
+    font-weight: 500;
+}
+
+.nav-link::before {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%) scaleX(0);
+    width: 100%;
+    height: 2px;
+    background-color: var(--color-text);
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.nav-link:hover,
+.nav-link.active {
+    color: var(--color-secondary);
+}
+
+.nav-link:hover::before,
+.nav-link.active::before {
+    transform: translateX(-50%) scaleX(1);
+}
+
+/* ===================================
+   MENU RESPONSIVE (Global)
+   =================================== */
+@media (max-width: 48rem) {
+    .nav-link::before {
+        height: 3px;
+        bottom: -8px;
+    }
+
+    .menu-toggle {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 30px;
+        height: 20px;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        z-index: 1100;
+        padding: 0;
+    }
+
+    .menu-toggle span {
+        width: 100%;
+        height: 2px;
+        background-color: var(--color-text);
+        transition: all 0.3s ease;
+        transform-origin: center;
+    }
+
+    .menu-toggle.open span:nth-child(1) {
+        transform: translateY(9px) rotate(45deg);
+    }
+    .menu-toggle.open span:nth-child(2) {
+        opacity: 0;
+    }
+    .menu-toggle.open span:nth-child(3) {
+        transform: translateY(-9px) rotate(-45deg);
+    }
+
+    .nav-menu {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 100%;
+        height: 100vh;
+        background: var(--color-bg);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 3rem;
+        transition: 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .nav-menu.active {
+        right: 0;
+    }
+}
+
+@media (max-width: 30rem) {
+    .logo {
+        font-size: 0.9rem;
+    }
+}

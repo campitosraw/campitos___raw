@@ -1,0 +1,197 @@
+/* Contenedor principal */
+.contact-page {
+    height: 100vh;
+    overflow: hidden;
+    padding: 0;
+}
+.contact-grid {
+    display: grid;
+    /* Invertimos: la imagen primero (izquierda) y el texto después (derecha) */
+    grid-template-columns: 0.8fr 1.2fr; 
+    height: 100vh;
+    width: 100%;
+}
+
+.contact-text-column {
+    order: 2;
+    display: flex;
+    align-items: flex-start; /* Cambiamos de center a flex-start */
+    padding-top: 15vh;        /* Empuja TODO el bloque de texto hacia abajo */
+    padding-left: 8%;
+    background: var(--color-bg);
+}
+
+.contact-image-column {
+    order: 1; /* Forzamos el orden */
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+}
+
+.full-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.text-content {
+    text-align: left; /* Todo el texto justificado a la izquierda */
+    width: 100%;
+    max-width: 800px;
+}
+
+
+/* Hover: Solo cambia a tu color secundario (rosa) */
+.link-group a:hover {
+    color: var(--color-secondary) !important;
+}
+
+/* Efecto Hover: Cambio de color y subrayado fino */
+.link-group a:hover {
+    color: var(--color-secondary);
+    text-decoration: underline;
+    text-underline-offset: 5px; /* Separa un poco el subrayado */
+}
+
+/* El Título: Gigante y Negro */
+.contact-title {
+    font-size: clamp(3rem, 7.5vw, 6.5rem); 
+    line-height: 1; /* Un poco más de aire para evitar cortes */
+    margin-bottom: 5rem; /* Espacio antes de los links */
+    color: #000000 !important;
+    font-weight: 800;
+    text-transform: uppercase;
+    text-align: left;
+    padding-top: 2rem; /* Empuja el título un poco hacia abajo */
+}
+
+.contact-title .subtitle {
+    display: block; /* Forzamos que TOGETHER vaya debajo para controlarlo mejor */
+    font-size: 1em;
+}
+
+/* El Email: Un poco menos grande que antes */
+.email-link {
+    font-size: 1.4rem !important; /* Tamaño intermedio elegante */
+    color: #000000 !important;
+    font-weight: 700;
+    text-decoration: none;
+    display: inline-block;
+    margin-bottom: 1rem;
+}
+
+/* Contenedor de links: reducimos el espacio entre ellos */
+.contact-links {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem; /* Antes teníamos 3.5rem, ahora están más compactos */
+}
+
+.link-group {
+    margin-bottom: 0; /* Eliminamos el margen extra para usar solo el gap del padre */
+}
+
+/* Etiquetas (LINKEDIN, INSTAGRAM) pegadas a su link */
+.link-group p {
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    margin-bottom: 0.2rem; /* Espacio mínimo con el enlace */
+    color: #000000 !important;
+    font-weight: 600;
+}
+
+/* El Email un poco más separado de las redes, pero no tanto como antes */
+.link-group:first-child {
+    margin-bottom: 1rem;
+}
+
+/* 1. Forzamos que el estado inicial y el visitado sean siempre NEGRO */
+.email-link, 
+.email-link:visited,
+.contact-link-small,
+.contact-link-small:visited {
+    color: #000000 !important;
+    text-decoration: none !important;
+    opacity: 1 !important;
+}
+
+/* 2. Definimos el ROSA únicamente para el hover */
+.email-link:hover,
+.contact-link-small:hover {
+    color: var(--color-secondary) !important; /* Tu rosa */
+    text-decoration: underline !important;
+    text-underline-offset: 5px;
+}
+
+/* 3. Ajuste para que el texto de LINKEDIN e INSTAGRAM sea negro puro */
+.contact-small p {
+    color: #000000 !important;
+    opacity: 1 !important;
+}
+
+
+
+/* Responsive */
+@media (max-width: 48rem) {
+    .contact-page {
+        height: auto; /* Permitimos que la página crezca a lo largo */
+        overflow: visible;
+        padding-top: 4rem; /* Espacio para el menú superior */
+    }
+
+    .contact-grid {
+        display: flex;
+        flex-direction: column; /* Imagen arriba, texto abajo */
+        height: auto;
+    }
+
+    /* --- IMAGEN ARRIBA --- */
+    .contact-image-column {
+        order: 1; 
+        height: 50vh; /* La foto ocupa la mitad de la pantalla inicial */
+        width: 100%;
+    }
+
+    /* --- TEXTO ABAJO --- */
+    .contact-text-column {
+        order: 2;
+        width: 100%;
+        padding: 3rem 1.5rem; /* Espacio lateral para que el texto no toque los bordes */
+        justify-content: center; /* Centramos el bloque */
+        background: var(--color-bg);
+    }
+
+    .text-content {
+        text-align: center; /* Texto centrado en móvil queda más limpio */
+        max-width: 100%;
+    }
+
+    /* Título más manejable en móvil */
+    .contact-title {
+        font-size: 2.8rem !important; 
+        line-height: 1.1;
+        margin-bottom: 3rem;
+        text-align: center;
+        padding-top: 0;
+    }
+
+    .contact-links {
+        align-items: center; /* Centramos los enlaces */
+        gap: 2rem;
+    }
+
+    .link-group p {
+        font-size: 0.65rem;
+        margin-bottom: 0.1rem;
+    }
+
+    .email-link {
+        font-size: 1.1rem !important;
+        word-break: break-all; /* Por si el mail es muy largo y no cabe */
+    }
+
+    .link-group a {
+        font-size: 1rem;
+    }
+}

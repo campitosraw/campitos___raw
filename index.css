@@ -1,0 +1,242 @@
+/* ===================================
+   HERO - HOMEPAGE
+   =================================== */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--spacing-3xl) var(--spacing-lg) var(--spacing-xl);
+}
+
+.hero-container {
+    max-width: 87.5rem;
+    width: 100%;
+    position: relative;
+    height: 37.5rem;
+}
+
+.hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-lg);
+    text-align: center;
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 20;
+}
+
+.welcome-text {
+    font-size: clamp(0.8rem, 2vw, 1.2rem);
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    opacity: 0.8;
+}
+
+.hero-title {
+    font-size: clamp(3rem, 8vw, 6.25rem); 
+    font-weight: 600;
+    line-height: 1;
+    text-align: center;
+}
+
+.title-line {
+    display: block;
+}
+
+.cta-button {
+    display: inline-flex;
+    align-items: center;
+    padding: var(--spacing-sm) 2.5rem;
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: var(--color-bg);
+    background: var(--color-text);
+    text-decoration: none;
+    border: 0.1875rem solid var(--color-text);
+    transition: all var(--transition-normal);
+    text-transform: uppercase;
+}
+
+.cta-button:hover {
+    background: var(--color-secondary);
+    border-color: var(--color-secondary);
+}
+
+/* ===================================
+   PROJECTS GRID - HOMEPAGE
+   =================================== */
+.projects-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.project-card {
+    position: absolute;
+    overflow: hidden;
+    background: var(--color-border);
+    animation: fadeInScale 0.8s ease-out forwards;
+    opacity: 0;
+}
+
+.project-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    opacity: 0.7;
+}
+
+.project-1 { width: 11.875rem; height: 20rem; top: 0.625rem; left: 0; animation-delay: 0s; }
+.project-2 { width: 21.875rem; height: 12.5rem; top: -1.875rem; right: 10%; animation-delay: 0.1s; }
+.project-3 { width: 21.875rem; height: 11.875rem; top: 17.5rem; left: 15%; animation-delay: 0.2s; }
+.project-4 { width: 10.625rem; height: 15rem; top: 5rem; right: 0; animation-delay: 0.3s; }
+.project-5 { width: 20rem; height: 11.25rem; bottom: 3.125rem; left: 50%; animation-delay: 0.4s; }
+.project-6 { width: 16.25rem; height: 18.75rem; top: 21.875rem; right: 3%; animation-delay: 0.5s; }
+.project-7 { width: 18.75rem; height: 12.5rem; top: 1.25rem; left: 22%; transform: translateX(-50%); animation-delay: 0.6s; }
+.project-8 { width: 12.5rem; height: 15rem; top: 25rem; left: 5%; transform: translateX(-50%); animation-delay: 0.6s; }
+
+/* ===================================
+   RESPONSIVE - HOMEPAGE
+   =================================== */
+/* ===================================
+   RESPONSIVE - HOMEPAGE (Bordes rectos, sin superposición)
+   =================================== */
+@media (max-width: 48rem) {
+    .hero {
+        padding: 7rem 1.5rem 4rem; /* Un poco más de espacio al final */
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+    }
+
+.hero-container {
+        display: flex;
+        flex-direction: column;
+        height: auto !important; /* Forzamos que crezca según el contenido */
+        gap: 0; /* Quitamos el gap para controlarlo con márgenes */
+    }
+
+    .hero-content {
+        position: relative !important;
+        top: auto !important;
+        left: auto !important;
+        transform: none !important;
+        order: 2;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 0.8rem; /* Espacio reducido para compacidad */
+    }
+
+    .welcome-text {
+        font-size: 0.8rem;
+        letter-spacing: 0.15em;
+        opacity: 0.7; /* Color de texto más sutil */
+        margin-bottom: -0.2rem;
+    }
+
+    .hero-title {
+        font-size: clamp(3rem, 10vw, 4.2rem);
+        line-height: 0.95 !important;
+        letter-spacing: -0.01em;
+    }
+
+    .projects-container {
+        order: 1;
+        display: block !important;
+        position: relative !important;
+        width: 100%;
+        height: auto !important; /* Que la caja mida lo que mide la imagen */
+        margin: 0 0 2rem 0; /* Imagen arriba, espacio abajo para separar del contenido */
+    }
+
+    .project-5 { 
+        display: block !important;
+        position: relative !important; /* Fundamental para que empuje al botón */
+        width: 100% !important;
+        height: auto !important;
+        top: auto !important;
+        left: auto !important;
+        margin-top: 0; /* Imagen en la parte superior, sin empuje extra */
+        margin-bottom: 0.5rem; /* Pequeño espacio entre imagen y título/CTA */
+    }
+
+    .project-card {
+        display: none;
+    }
+
+
+
+    /* Estilos para el enlace dentro de la tarjeta de proyecto */
+    .project-5 a {
+        display: block;
+        width: 100%;
+        height: 100%;
+    }
+
+    .project-5 img {
+        opacity: 1;
+        width: 100%;
+        height: 100%;
+        object-fit: cover; /* Asegura que la imagen cubra el área */
+        object-position: center;
+        transition: transform 0.4s ease; /* Efecto de hover suave */
+    }
+
+    /* Pequeño efecto de zoom al pasar por encima de la imagen */
+    .project-5:hover img {
+        transform: scale(1.03);
+    }
+
+.cta-button {
+        order: 3;
+        width: 100%;
+        
+        /* Centrado total del texto */
+        display: flex; 
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        
+        /* Espaciado y dimensiones */
+        padding: 1.2rem 2rem; 
+        margin-top: 2rem; /* <--- Este es el espacio entre la imagen y el CTA */
+        
+        /* Estética de bordes rectos */
+        border-radius: 0; 
+        background: var(--color-text);
+        color: var(--color-bg);
+        border: none;
+        
+        /* Tipografía */
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        letter-spacing: 0.15em;
+        text-decoration: none;
+        font-weight: 700;
+        
+        transition: background var(--transition-normal);
+    }
+
+    .cta-button:hover {
+        background: var(--color-secondary);
+    }
+}
+
+@media (max-width: 30rem) {
+    .hero-title {
+        font-size: 2.8rem;
+    }
+    .projects-container {
+        margin: 1rem 0; /* Espacio reducido en pantallas muy pequeñas */
+    }
+}
